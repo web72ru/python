@@ -30,15 +30,15 @@ def sbor_ssylok_so_vseh_stranic():
     vse_ssylki = list(set(vse_ssylki))
     return vse_ssylki
 
-def sbor_dannyh_tovara(url_1_tovara, params=''):
+def sbor_dannyh_tovara(url, params=''):
     tree = lxml.html.document_fromstring(html.text)
-    r = requests.get(url_1_tovara, headers=HEADERS, params=params)
+    r = requests.get(url, headers=HEADERS, params=params)
     print(r.text)
 
 html = poluchaem_html(URL)
-ssylki = sbor_ssylok_so_vseh_stranic()
-tovary = poluchaem_ssylki(html)
-sbor_dannyh = sbor_dannyh_tovara(ssylki)
+#ssylki = sbor_ssylok_so_vseh_stranic()
+#tovary = poluchaem_ssylki(html)
+sbor_dannyh = sbor_dannyh_tovara(url_1_tovara)
 
-print(sbor_dannyh)
+#print(sbor_dannyh)
 
