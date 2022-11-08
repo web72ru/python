@@ -1,13 +1,11 @@
 import requests
-
 import lxml.html
-
 from bs4 import BeautifulSoup
 import csv
 
 HOST = 'https://loft4you.ru/'
 URL = 'https://loft4you.ru/catalog/disaynerskie_svetilniki'
-tovar = 'https://loft4you.ru/catalog/like_modo'
+url_1_tovara = 'https://loft4you.ru/catalog/like_modo'
 HEADERS = {'accept': '*/*',
            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 YaBrowser/22.9.4.863 Yowser/2.5 Safari/537.36'
            }
@@ -32,10 +30,10 @@ def sbor_ssylok_so_vseh_stranic():
     vse_ssylki = list(set(vse_ssylki))
     return vse_ssylki
 
-def sbor_dannyh_tovara(ssylki, params=''):
+def sbor_dannyh_tovara(url_1_tovara, params=''):
     tree = lxml.html.document_fromstring(html.text)
-    r = requests.get(ssylki[0], headers=HEADERS, params=params)
-    print(r.status_code)
+    r = requests.get(url_1_tovara, headers=HEADERS, params=params)
+    print(r.text)
 
 html = poluchaem_html(URL)
 ssylki = sbor_ssylok_so_vseh_stranic()
