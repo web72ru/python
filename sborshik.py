@@ -29,9 +29,13 @@ def sbor_ssylok_so_vseh_stranic():
         vse_ssylki.extend(ssylki_na_tovary)
     vse_ssylki = list(set(vse_ssylki))
     return vse_ssylki
+    
+ssylki_na_tovary = sbor_ssylok_so_vseh_stranic()
 
-kod_tovara = poluchaem_html(url_1_tovara, params='params')
-print(kod_tovara.text)
-#def sbor_dannyh_tovara():
+for ssylka in ssylki_na_tovary:
+	html_1_tovara = poluchaem_html(ssylka, params='params')
+	print(html_1_tovara)
+
+#def sbor_dannyh_tovara:
 
 html = poluchaem_html(URL)
