@@ -32,9 +32,10 @@ def sbor_ssylok_so_vseh_stranic():
     
 ssylki_na_tovary = sbor_ssylok_so_vseh_stranic()
 
-for ssylka in ssylki_na_tovary:
-	html_1_tovara = poluchaem_html(ssylka, params='params')
-	print(html_1_tovara)
+html_1_tovara = poluchaem_html(ssylka, params='params')
+sobrannye_dannye = {
+	'название' = tree.xpath('//h1')
+}
 
 #def sbor_dannyh_tovara:
 
