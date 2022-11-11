@@ -32,11 +32,17 @@ def sbor_ssylok_so_vseh_stranic():
     
 ssylki_na_tovary = sbor_ssylok_so_vseh_stranic()
 
-html_1_tovara = poluchaem_html(ssylka, params='params')
-sobrannye_dannye = {
-	'название' = tree.xpath('//h1')
-}
-
-#def sbor_dannyh_tovara:
+html_tovara = poluchaem_html(url_1_tovara)
+def dannye_tovara(html_tovara):
+	tree = lxml.html.document_fromstring(html_tovara.text)
+	h1 = tree.xpath('//h1')
+	sobrannye_dannye = {
+		'название': h1
+	}
+	return sobrannye_dannye
+	
+dannye = dannye_tovara(html_tovara)
+print(dannye)
 
 html = poluchaem_html(URL)
+
