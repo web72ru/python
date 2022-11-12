@@ -40,7 +40,7 @@ def dannye_tovara():
 		katalog.append({
 			'название': h1
 		})
-		return katalog
+	return katalog
 	
 dannye = dannye_tovara()
 
