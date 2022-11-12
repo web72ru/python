@@ -42,7 +42,7 @@ def dannye_tovara(html_tovara):
 	return sobrannye_dannye
 	
 dannye = dannye_tovara(html_tovara)
-print(dannye)
+print(dannye['название'][0].tag)
 
 html = poluchaem_html(URL)
 
