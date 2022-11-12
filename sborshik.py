@@ -5,7 +5,6 @@ import csv
 
 HOST = 'https://loft4you.ru/'
 URL = 'https://loft4you.ru/catalog/disaynerskie_svetilniki'
-url_1_tovara = 'https://loft4you.ru/catalog/like_modo'
 HEADERS = {'accept': '*/*',
            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 YaBrowser/22.9.4.863 Yowser/2.5 Safari/537.36'
            }
@@ -32,17 +31,19 @@ def sbor_ssylok_so_vseh_stranic():
     
 ssylki_na_tovary = sbor_ssylok_so_vseh_stranic()
 
-html_tovara = poluchaem_html(url_1_tovara)
-def dannye_tovara(html_tovara):
-	tree = lxml.html.document_fromstring(html_tovara.text)
-	h1 = tree.xpath('//h1')
-	sobrannye_dannye = {
-		'название': h1
-	}
-	return sobrannye_dannye
+def dannye_tovara():
+	katalog = []
+	for url_1_tovara in ssylki_na_tovary:
+		html_tovara = poluchaem_html(url_1_tovara)
+		tree = lxml.html.document_fromstring(html_tovara.text)
+		h1 = tree.xpath('//h1/text')
+		katalog.append({
+			'название': h1
+		})
+		return katalog
 	
-dannye = dannye_tovara(html_tovara)
-print(dannye['название'][0].tag)
+dannye = dannye_tovara()
 
 html = poluchaem_html(URL)
 
+print(dannye[0])
