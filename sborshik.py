@@ -32,18 +32,20 @@ def sbor_ssylok_so_vseh_stranic():
 ssylki_na_tovary = sbor_ssylok_so_vseh_stranic()
 
 def dannye_tovara():
+	i = 0
 	katalog = []
 	for url_1_tovara in ssylki_na_tovary:
 		html_tovara = poluchaem_html(url_1_tovara)
 		tree = lxml.html.document_fromstring(html_tovara.text)
-		h1 = tree.xpath('//h1/text')
+		h1 = tree.xpath('//h1/text()')
 		katalog.append({
 			'название': h1
 		})
+		i += 1
+		if i == 5:
+			break
 	return katalog
 	
 dannye = dannye_tovara()
 
-html = poluchaem_html(URL)
-
-print(dannye[0])
+print(dannye)
