@@ -43,13 +43,14 @@ def dannye_tovara():
     for url_1_tovara in ssylki_na_tovary:
         html_tovara = poluchaem_html(url_1_tovara)
         tree = lxml.html.document_fromstring(html_tovara.text)
+        html_text = html_tovara.text
 
         artikul = tree.xpath('//span[@itemprop="sku"]/text()')
         h1 = tree.xpath('//h1/text()')
         cena = tree.xpath('//span[@itemprop="price"]/text()')
         cena = re.sub(r'\s+', '', cena[0])
         izy = tree.xpath('//a[@class="fancybox"]/@href')
-        harakteristiki = re.findall(r'<ul.*?id=\"product_options\">.*?</ul>', html_tovara.text)
+        harakteristiki = re.findall(r'<ul.*?id=\"product_options\">.*?</ul>', html_text, flags=re.MULTILINE)
 
         katalog.append({
             'артикул': artikul,
