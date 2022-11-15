@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 import csv
 import re
 
+from lxml import etree
+
 HOST = 'https://loft4you.ru/'
 URL = 'https://loft4you.ru/catalog/disaynerskie_svetilniki'
 HEADERS = {'accept': '*/*',
@@ -50,15 +52,21 @@ def dannye_tovara():
         cena = tree.xpath('//span[@itemprop="price"]/text()')
         cena = re.sub(r'\s+', '', cena[0])
         izy = tree.xpath('//a[@class="fancybox"]/@href')
-        harakteristiki = re.findall(r'<ul.*?id=\"product_options\">.*?</ul>', html_text, flags=re.MULTILINE)
+        #html_harakteristiki = re.findall(r'(?s)<ul[^<>]*?id=\"product_options\">.*?<\/ul>', html_text)
+        li_spisok = tree.xpath('//ul[@id="product_options"]/li')
+        for li in li_spisok:
+            kluch = li.xpath("strong/text()")[0]
+            znach = li.xpath("strong[contains(text(),'" + kluch + "')]/ancestor::li/text()")
+            katalog.append({
+                kluch: znach
+            })
 
         katalog.append({
             'артикул': artikul,
             'название': h1,
             'категория': ['Дизайнерские светильники'],
             'цена': cena,
-            'изы': izy,
-            'характеристики': harakteristiki
+            'изы': izy
         })
         i += 1
         if i == 5:
