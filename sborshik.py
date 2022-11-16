@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import csv
 import re
 
-from lxml import etree
+#CSV = loft4you.csv
 
 HOST = 'https://loft4you.ru/'
 URL = 'https://loft4you.ru/catalog/disaynerskie_svetilniki'
@@ -38,6 +38,12 @@ def sbor_ssylok_so_vseh_stranic():
 
 ssylki_na_tovary = sbor_ssylok_so_vseh_stranic()
 
+'''
+def zapis(tovary, put):
+    with open(put, 'w', newline='') as file:
+        zapisy = csv.writer(file, delimiter=';')
+        zapisy.writerow()
+'''
 
 def dannye_tovara():
     i = 0
@@ -45,21 +51,19 @@ def dannye_tovara():
     for url_1_tovara in ssylki_na_tovary:
         html_tovara = poluchaem_html(url_1_tovara)
         tree = lxml.html.document_fromstring(html_tovara.text)
-        html_text = html_tovara.text
+        #html_text = html_tovara.text
 
         artikul = tree.xpath('//span[@itemprop="sku"]/text()')
         h1 = tree.xpath('//h1/text()')
         cena = tree.xpath('//span[@itemprop="price"]/text()')
         cena = re.sub(r'\s+', '', cena[0])
         izy = tree.xpath('//a[@class="fancybox"]/@href')
-        #html_harakteristiki = re.findall(r'(?s)<ul[^<>]*?id=\"product_options\">.*?<\/ul>', html_text)
         li_spisok = tree.xpath('//ul[@id="product_options"]/li')
+        harakteristiki = []
         for li in li_spisok:
             kluch = li.xpath("strong/text()")[0]
             znach = li.xpath("strong[contains(text(),'" + kluch + "')]/ancestor::li/text()")
-            katalog.append({
-                kluch: znach
-            })
+            harakteristiki.append([kluch, znach])
 
         katalog.append({
             'артикул': artikul,
@@ -68,9 +72,13 @@ def dannye_tovara():
             'цена': cena,
             'изы': izy
         })
+        for slovar in harakteristiki:
+            katalog[-1].update({slovar[0]: slovar[1]})
+
         i += 1
         if i == 5:
             break
+        print(harakteristiki)
     return katalog
 
 
