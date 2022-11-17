@@ -61,6 +61,14 @@ def dannye_tovara():
             harakteristiki.append([kluch, znach])
             kluchi.append(kluch)
 
+        p_spisok = tree.xpath('//div[@id="add_product_info"]/p')
+
+        for p in p_spisok:
+            kluch = p.xpath("b/text()")[0]
+            znach = p.xpath("b[contains(text(),'" + kluch + "')]/ancestor::p/text()")
+            harakteristiki.append([kluch, znach])
+            kluchi.append(kluch)
+
         katalog.append({
             kluchi[0]: artikul,
             kluchi[1]: h1,
@@ -94,7 +102,7 @@ def zapis(dannye, put):
             stroka_tovara = []
             for kluch in kluchi:
                 if kluch in dannye_tovara:
-                    stroka_tovara.append(''.join(dannye_tovara[kluch]))
+                    stroka_tovara.append('\n'.join(dannye_tovara[kluch]))
                 else:
                     stroka_tovara.append('')
             zapisnik.writerow(stroka_tovara)
