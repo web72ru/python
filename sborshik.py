@@ -87,16 +87,17 @@ for kluch in kluchi_povtory:
 
 
 def zapis(dannye, put):
-    stroka_tovara = []
     with open(put, 'w', newline='') as file:
         zapisnik = csv.writer(file, delimiter=';')
         zapisnik.writerow(kluchi)
         for dannye_tovara in dannye:
+            stroka_tovara = []
             for kluch in kluchi:
                 if kluch in dannye_tovara:
                     stroka_tovara.append(''.join(dannye_tovara[kluch]))
                 else:
                     stroka_tovara.append('')
-        zapisnik.writerow(stroka_tovara)
+            zapisnik.writerow(stroka_tovara)
+
 
 zapis(dannye, CSV)
