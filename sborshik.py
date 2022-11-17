@@ -85,14 +85,14 @@ for kluch in kluchi_povtory:
     if kluch not in kluchi:
         kluchi.append(kluch)
 
-'''
 def zapis(tovary, put):
     with open(put, 'w', newline='') as file:
         zapisy = csv.writer(file, delimiter=';')
-        zapisy.writerow(set(kluchi))
-'''
+        zapisy.writerow(kluchi)
+        stroka_tovara = []
+        for dannye_tovara in dannye:
+        	for kluch in kluchi:
+        		if kluch == dannye_tovara[kluch]:
+        			stroka_tovara.append(dannye_tovara[kluch])
+    			zapis.writerow(stroka_tovara)
 
-print(kluchi_povtory)
-print(kluchi)
-
-# print(dannye)
