@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import csv
 import re
 
-# CSV = loft4you.csv
+CSV = 'loft4you.csv'
 
 HOST = 'https://loft4you.ru/'
 URL = 'https://loft4you.ru/catalog/disaynerskie_svetilniki'
@@ -85,14 +85,18 @@ for kluch in kluchi_povtory:
     if kluch not in kluchi:
         kluchi.append(kluch)
 
-def zapis(tovary, put):
-    with open(put, 'w', newline='') as file:
-        zapisy = csv.writer(file, delimiter=';')
-        zapisy.writerow(kluchi)
-        stroka_tovara = []
-        for dannye_tovara in dannye:
-        	for kluch in kluchi:
-        		if kluch == dannye_tovara[kluch]:
-        			stroka_tovara.append(dannye_tovara[kluch])
-    			zapis.writerow(stroka_tovara)
 
+def zapis(dannye, put):
+    stroka_tovara = []
+    with open(put, 'w', newline='') as file:
+        zapisnik = csv.writer(file, delimiter=';')
+        zapisnik.writerow(kluchi)
+        for dannye_tovara in dannye:
+            for kluch in kluchi:
+                if kluch in dannye_tovara:
+                    stroka_tovara.append(''.join(dannye_tovara[kluch]))
+                else:
+                    stroka_tovara.append('')
+        zapisnik.writerow(stroka_tovara)
+
+zapis(dannye, CSV)
