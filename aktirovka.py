@@ -1,4 +1,6 @@
 import requests, lxml, re
+from urllib3 import disable_warnings, exceptions
+disable_warnings(exceptions.InsecureRequestWarning)
 
 session = requests.Session()
 
@@ -9,6 +11,7 @@ session = requests.Session()
 }
 def получаем_хтмл(ссылка, params=''):
 	хтмл_страницы = session.get(ссылка, headers=шапка, params=params, verify=False).text
+	#хтмл_страницы.encode(encoding='UTF-8')
 	return хтмл_страницы
 	
 хтмл_страницы = получаем_хтмл(исходник)
