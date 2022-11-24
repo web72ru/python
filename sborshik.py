@@ -109,3 +109,4 @@ def zapis(dannye, put):
 
 
 zapis(dannye, CSV)
+print(poluchaem_html(HOST, params=params))
