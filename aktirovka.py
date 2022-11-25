@@ -11,14 +11,9 @@ session = requests.Session()
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 YaBrowser/22.11.0.2419 Yowser/2.5 Safari/537.36'
 }
 
-proxies = {
-    'http': 'http://203.23.103.60:80',
-    'https': 'https://176.192.70.58:8007'
-}
-
 
 def получаем_хтмл(ссылка, params=''):
-    ответ = requests.get(ссылка, headers=шапка, params=params, proxies=proxies, verify=False)
+    ответ = requests.get(ссылка, headers=шапка, params=params, verify=False)
     хтмл = ответ.content.decode('windows-1251')
 
     return хтмл
