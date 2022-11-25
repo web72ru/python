@@ -39,21 +39,20 @@ def выборка_новостей():
         страница_новости = получаем_хтмл(ссылка)
         икспас = lxml.html.document_fromstring(страница_новости)
         h4 = икспас.xpath('//div[@id="news"]//h4[contains(text(), "учеб") and contains(text(), "занят") and contains(text(), "отмен")]/text()')
-        дата = икспас.xpath('//h4[@class="first"]')
+        дата = икспас.xpath('//h4[@class="first"]/text()')
+        описание = икспас.xpath('//div[@id="news"]/div[0]/text()')
+        иза = икспас.xpath('//div[@id="news"]/div[0]/img/@src')
         if h4:
-        	предметы = {
-        		'дата': дата
-        		'заголовок':
-        		'описание':
-        		'иза':
-        		'ссылка': ссылка
-        	}
-       
-        print(h4)
-        #break
+            новости.append ({
+                'дата': дата,
+                'заголовок': h4,
+                'описание': описание,
+                'иза': иза,
+                'ссылка': ссылка
+            })
         time.sleep(random.randint(10, 20))
+    return новости
 
-   
 
 
-выборка_новостей()
+print(выборка_новостей())
