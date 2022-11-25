@@ -1,4 +1,4 @@
-import requests, lxml.html, re
+import requests, lxml.html, re, time, random
 from urllib3 import disable_warnings, exceptions
 
 disable_warnings(exceptions.InsecureRequestWarning)
@@ -32,14 +32,19 @@ def находим_ссылки(страница):
 ссылки_на_новость = находим_ссылки(хтмл_страницы)
 
 
+
 def выборка_новостей():
     новости = []
-    for ссылка in ссылки_на_новость:
+    for ссылка in ссылки_на_новость.sort(reverse=True):
         страница_новости = получаем_хтмл(ссылка)
+        икспас = lxml.html.document_fromstring(страница_новости)
+        h4 = икспас.xpath('//div[@id="news"]//h4[contains(text(), "учеб") and contains(text(), "занят") and contains(text(), "отмен")]/text()')
+       
+        print(h4)
+        break
+        #time.sleep(random.randint(10, 20))
 
-        print(страница_новости)
-
-    return новости
+   
 
 
-print(выборка_новостей())
+выборка_новостей()
