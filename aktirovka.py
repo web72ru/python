@@ -12,8 +12,9 @@ session = requests.Session()
 }
 
 
-def получаем_хтмл(ссылка, params=''):
-    ответ = requests.get(ссылка, headers=шапка, params=params, verify=False)
+
+def получаем_хтмл(ссылка):
+    ответ = session.get(ссылка, headers=шапка, verify=False)
     хтмл = ответ.content.decode('windows-1251')
 
     return хтмл
@@ -38,7 +39,7 @@ def выборка_новостей():
     for ссылка in ссылки_на_новость:
         страница_новости = получаем_хтмл(ссылка)
         икспас = lxml.html.document_fromstring(страница_новости)
-        h4 = икспас.xpath('//div[@id="news"]//h4[contains(text(), "учеб") and contains(text(), "занят") and contains(text(), "отмен")]/text()')
+        h4 = икспас.xpath('//div[@id="news"]//h4[contains(text(), " уче") and contains(text(), "анят") and contains(text(), "отмен")]/text()')
         дата = икспас.xpath('//*[@id="news"]/h4[1]/span/text()')
         описание = икспас.xpath('//*[@id="news"]/div[1]/div/*/text()')
         иза = икспас.xpath('//*[@id="news"]/div[1]/img/@src')
