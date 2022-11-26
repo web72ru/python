@@ -1,4 +1,4 @@
-import requests, lxml.html, re, time, random
+import requests, lxml.html, re, datetime
 from urllib3 import disable_warnings, exceptions
 
 disable_warnings(exceptions.InsecureRequestWarning)
@@ -10,7 +10,6 @@ session = requests.Session()
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 YaBrowser/22.11.0.2419 Yowser/2.5 Safari/537.36'
 }
-
 
 
 def получаем_хтмл(ссылка):
@@ -39,10 +38,13 @@ def выборка_новостей():
     for ссылка in ссылки_на_новость:
         страница_новости = получаем_хтмл(ссылка)
         икспас = lxml.html.document_fromstring(страница_новости)
-        h4 = икспас.xpath('//div[@id="news"]//h4[contains(text(), " уче") and contains(text(), "анят") and contains(text(), "отмен")]/text()')
+        h4 = икспас.xpath(
+            '//div[@id="news"]//h4[contains(text(), " уче") and contains(text(), "анят") and contains(text(), "отмен")]/text()')
         дата = икспас.xpath('//*[@id="news"]/h4[1]/span/text()')
+        дата = re.split(r'[\.\s\:]+', дата[0])
         описание = икспас.xpath('//*[@id="news"]/div[1]/div/*/text()')
         иза = икспас.xpath('//*[@id="news"]/div[1]/img/@src')
+
         if h4:
             новости.append({
                 'дата': дата,
@@ -51,8 +53,15 @@ def выборка_новостей():
                 'иза': иза,
                 'ссылка': ссылка
             })
-        time.sleep(random.randint(10, 20))
+
     return новости
+
+
+def запись_новости(новости):
+    with  open('последняя_новость.txt', 'r+') as дата_новости:
+        if новости['дата'] > дата_новости.readline:
+            дата_новости.write(новости['дата'])
+
 
 
 print(выборка_новостей())
