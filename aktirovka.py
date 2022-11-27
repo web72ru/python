@@ -5,7 +5,7 @@ disable_warnings(exceptions.InsecureRequestWarning)
 
 session = requests.Session()
 
-исходник = 'https://www.tyumen-city.ru/sobitii/2022-11-26/'
+исходник = 'https://www.tyumen-city.ru/sobitii/2022-11-27/'
 шапка = {
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 YaBrowser/22.11.0.2419 Yowser/2.5 Safari/537.36'
@@ -37,7 +37,6 @@ def выборка_новостей(ссылки):
     страница_новости = ''
     if ссылки:
         страница_новости = получаем_хтмл(ссылки[0])
-        print(ссылки[0])
     икспас = lxml.html.document_fromstring(страница_новости)
     h4 = икспас.xpath(
         '//div[@id="news"]//h4[contains(text(), " уче") and contains(text(), "анят") and contains(text(), "отмен")]/text()')
@@ -54,7 +53,7 @@ def выборка_новостей(ссылки):
             'ссылка': ссылки[0]
         }
     else:
-        print('На сегодня новостей про актировку нет')
+        print('Новостей про актировку нет')
         return None
 
 
@@ -63,7 +62,6 @@ def выборка_новостей(ссылки):
 
 def запись_новости(новость):
     if not новость:
-        print('Новостей нет')
         return None
     дата_строка = новость['дата'][0]
     дата = datetime.datetime.strptime(дата_строка, '%d.%m.%Y %H:%M')
