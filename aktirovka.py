@@ -5,7 +5,7 @@ disable_warnings(exceptions.InsecureRequestWarning)
 
 session = requests.Session()
 
-исходник = 'https://www.tyumen-city.ru/sobitii/2022-11-26/'
+исходник = 'https://www.tyumen-city.ru/sobitii/2022-11-25/'
 шапка = {
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 YaBrowser/22.11.0.2419 Yowser/2.5 Safari/537.36'
@@ -30,34 +30,33 @@ def находим_ссылки(страница):
 
 
 ссылки_на_новость = находим_ссылки(хтмл_страницы)
-ссылки_на_новость = ссылки_на_новость[::-1]
 
 
-def выборка_новостей():
-    новости = []
-    for ссылка in ссылки_на_новость:
-        страница_новости = получаем_хтмл(ссылка)
-        икспас = lxml.html.document_fromstring(страница_новости)
-        h4 = икспас.xpath(
-            '//div[@id="news"]//h4[contains(text(), " уче") and contains(text(), "анят") and contains(text(), "отмен")]/text()')
-        дата = икспас.xpath('//*[@id="news"]/h4[1]/span/text()')
-        # дата = datetime.datetime.strptime(дата[0], '%d.%m.%Y %H:%M')
-        описание = икспас.xpath('//*[@id="news"]/div[1]/div/*/text()')
-        иза = икспас.xpath('//*[@id="news"]/div[1]/img/@src')
+def выборка_новостей(ссылки):
+    global страница_новости
+    if ссылки:
+        страница_новости = получаем_хтмл(ссылки_на_новость[0])
+    икспас = lxml.html.document_fromstring(страница_новости)
+    h4 = икспас.xpath(
+        '//div[@id="news"]//h4[contains(text(), " уче") and contains(text(), "анят") and contains(text(), "отмен")]/text()')
+    дата = икспас.xpath('//*[@id="news"]/h4[1]/span/text()')
+    описание = икспас.xpath('//*[@id="news"]/div[1]/div/*/text()')
+    иза = икспас.xpath('//*[@id="news"]/div[1]/img/@src')
 
-        if h4:
-            новости.append({
-                'дата': дата,
-                'заголовок': h4,
-                'описание': описание,
-                'иза': иза,
-                'ссылка': ссылка
-            })
+    if h4:
+        return {
+            'дата': дата,
+            'заголовок': h4,
+            'описание': описание,
+            'иза': иза,
+            'ссылка': ссылки_на_новость[0]
+        }
+    else:
+        print('На сегодня новостей про актировку нет')
+        exit()
 
-    return новости
 
-
-полученная_новость = выборка_новостей()
+полученная_новость = выборка_новостей(ссылки_на_новость)
 
 
 def запись_новости(новость):
