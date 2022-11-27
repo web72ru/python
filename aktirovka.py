@@ -5,7 +5,7 @@ disable_warnings(exceptions.InsecureRequestWarning)
 
 session = requests.Session()
 
-исходник = 'https://www.tyumen-city.ru/sobitii/2022-11-25/'
+исходник = 'https://www.tyumen-city.ru/sobitii/2022-11-26/'
 шапка = {
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 YaBrowser/22.11.0.2419 Yowser/2.5 Safari/537.36'
@@ -30,12 +30,14 @@ def находим_ссылки(страница):
 
 
 ссылки_на_новость = находим_ссылки(хтмл_страницы)
+ссылки_на_новость = ссылки_на_новость[::-1]
 
 
 def выборка_новостей(ссылки):
     страница_новости = ''
     if ссылки:
         страница_новости = получаем_хтмл(ссылки[0])
+        print(ссылки[0])
     икспас = lxml.html.document_fromstring(страница_новости)
     h4 = икспас.xpath(
         '//div[@id="news"]//h4[contains(text(), " уче") and contains(text(), "анят") and contains(text(), "отмен")]/text()')
@@ -65,16 +67,17 @@ def запись_новости(новость):
         return None
     дата_строка = новость['дата'][0]
     дата = datetime.datetime.strptime(дата_строка, '%d.%m.%Y %H:%M')
-    # Создаём файл новости, если нету
     if not os.path.exists('последняя_новость.txt'):
-        файл = open('последняя_новость.txt', 'w')
-        print('Создан файл последняя_новость.txt')
-        файл.write(str(дата))
-        print(f'Дата {дата} записана.')
-        файл.close()
+        with  open('последняя_новость.txt', 'w') as последняя_новость:
+            последняя_новость.write(str(дата))
+            print(f'Дата {дата} записана.')
     else:
-        with  open('последняя_новость.txt', 'r+') as последняя_новость:
-            if дата > datetime.datetime.strptime(последняя_новость.readline(), '%Y-%m-%d %H:%M:%S'):
+        with  open('последняя_новость.txt', 'r') as последняя_новость:
+            дата_в_файле = последняя_новость.readline()
+            print('Читаем файл')
+
+        if дата > datetime.datetime.strptime(дата_в_файле, '%Y-%m-%d %H:%M:%S'):
+            with  open('последняя_новость.txt', 'w') as последняя_новость:
                 последняя_новость.write(str(дата))
                 print(f'Дата {дата} записана.')
 
