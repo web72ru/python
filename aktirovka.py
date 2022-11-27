@@ -65,10 +65,11 @@ def запись_новости(новость):
     дата = datetime.datetime.strptime(дата_строка, '%d.%m.%Y %H:%M')
     # Создаём файл новости, если нету
     if not os.path.exists('последняя_новость.txt'):
-        файл = open('последняя_новость.txt', 'w').close()
+        файл = open('последняя_новость.txt', 'w')
         print('Создан файл последняя_новость.txt')
         файл.write(str(дата))
         print('В файл записана дата новости')
+        файл.close()
     else:
         with  open('последняя_новость.txt', 'r+') as последняя_новость:
             if дата > datetime.datetime.strptime(последняя_новость.readline(), '%Y-%m-%d %H:%M:%S'):
