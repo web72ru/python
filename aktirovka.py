@@ -5,7 +5,7 @@ disable_warnings(exceptions.InsecureRequestWarning)
 
 session = requests.Session()
 
-исходник = 'https://www.tyumen-city.ru/sobitii/2022-11-27/'
+исходник = 'https://www.tyumen-city.ru/sobitii/2022-11-25/'
 шапка = {
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 YaBrowser/22.11.0.2419 Yowser/2.5 Safari/537.36'
@@ -72,12 +72,13 @@ def запись_новости(новость):
     else:
         with  open('последняя_новость.txt', 'r') as последняя_новость:
             дата_в_файле = последняя_новость.readline()
-            print('Читаем файл')
 
         if дата > datetime.datetime.strptime(дата_в_файле, '%Y-%m-%d %H:%M:%S'):
             with  open('последняя_новость.txt', 'w') as последняя_новость:
                 последняя_новость.write(str(дата))
                 print(f'Дата {дата} записана.')
+        else:
+            print('Эта новость уже была получена.')
 
 
 запись_новости(полученная_новость)
