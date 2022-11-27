@@ -1,11 +1,8 @@
-import datetime, re
+from selenium import webdriver
+DRIVER = 'chromedriver'
+driver = webdriver.Chrome(DRIVER)
 
-новости =[{'дата': ['26.11.2022 12:30']}]ф
-дата = datetime.datetime.strptime(новости[0]['дата'][0], '%d.%m.%Y %H:%M')
-строка = '2022-11-26 06:07:00'
-старая_дата = datetime.datetime.strptime(строка, '%Y-%m-%d %H:%M:%S')
+driver.get('https://www.tyumen-city.ru/sobitii/society/110338/')
 
-if  дата > старая_дата:
-	print(f'дата {дата} больше чем {старая_дата}')
-else:
-	print(f'дата {дата} меньше чем {старая_дата}')
+driver.save_screenshot("screenshot.png")
+driver.quit()

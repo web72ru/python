@@ -1,5 +1,6 @@
 import requests, lxml.html, datetime, os.path
 from urllib3 import disable_warnings, exceptions
+from selenium import webdriver
 
 disable_warnings(exceptions.InsecureRequestWarning)
 
@@ -10,6 +11,13 @@ session = requests.Session()
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 YaBrowser/22.11.0.2419 Yowser/2.5 Safari/537.36'
 }
+
+def делаем_снимок(ссылка):
+    DRIVER = 'chromedriver'
+    driver = webdriver.Chrome(DRIVER)
+    driver.get(ссылка)
+    driver.save_screenshot('snimok.png')
+    driver.quit()
 
 
 def получаем_хтмл(ссылка):
@@ -42,14 +50,14 @@ def выборка_новостей(ссылки):
         '//div[@id="news"]//h4[contains(text(), " уче") and contains(text(), "анят") and contains(text(), "отмен")]/text()')
     дата = икспас.xpath('//*[@id="news"]/h4[1]/span/text()')
     описание = икспас.xpath('//*[@id="news"]/div[1]/div/*/text()')
-    иза = икспас.xpath('//*[@id="news"]/div[1]/img/@src')
 
     if h4:
+        делаем_снимок(ссылки[0])
         return {
             'дата': дата,
             'заголовок': h4,
             'описание': описание,
-            'иза': иза,
+            'иза': 'snimok.png',
             'ссылка': ссылки[0]
         }
     else:
