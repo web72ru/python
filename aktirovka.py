@@ -15,13 +15,13 @@ session = requests.Session()
 }
 
 def делаем_снимок(ссылка):
-	s = Service('/storage/emulated/0/Download/chromedriver_linux64/chromedriver')
-	driver = webdriver.Chrome(service=s)
-  #DRIVER = '/storage/emulated/0/Download/chromedriver_linux64/chromedriver'
-  #driver = webdriver.Chrome(DRIVER)
-  driver.get(ссылка)
-  driver.save_screenshot('snimok.png')
-  driver.quit()
+    s = Service('/storage/emulated/0/Download/chromedriver_linux64/chromedriver')
+    driver = webdriver.Chrome(service=s)
+    driver.get(ссылка)
+    driver.save_screenshot('snimok.png')
+    driver.quit()
+    #DRIVER = '/storage/emulated/0/Download/chromedriver_linux64/chromedriver'
+    #driver = webdriver.Chrome(DRIVER)
 
 
 def получаем_хтмл(ссылка):
