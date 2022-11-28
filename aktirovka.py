@@ -1,6 +1,8 @@
 import requests, lxml.html, datetime, os.path
 from urllib3 import disable_warnings, exceptions
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+
 
 disable_warnings(exceptions.InsecureRequestWarning)
 
@@ -13,11 +15,13 @@ session = requests.Session()
 }
 
 def делаем_снимок(ссылка):
-    DRIVER = 'chromedriver'
-    driver = webdriver.Chrome(DRIVER)
-    driver.get(ссылка)
-    driver.save_screenshot('snimok.png')
-    driver.quit()
+	s = Service('/storage/emulated/0/Download/chromedriver_linux64/chromedriver')
+	driver = webdriver.Chrome(service=s)
+  #DRIVER = '/storage/emulated/0/Download/chromedriver_linux64/chromedriver'
+  #driver = webdriver.Chrome(DRIVER)
+  driver.get(ссылка)
+  driver.save_screenshot('snimok.png')
+  driver.quit()
 
 
 def получаем_хтмл(ссылка):
