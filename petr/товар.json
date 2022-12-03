@@ -1,0 +1,404 @@
+{"state":{"code":20001,"title":"ОК"},"data":{"product": {
+  "assoc_bundles": [
+    {
+      "section_guid": "e9e4a9a3-e397-11e6-95f7-00259036a192",
+      "code": 20792,
+      "title": "Защита органов дыхания",
+      "cover_image": "//cs.petrovich.ru/images/1262365/original.jpg",
+      "seo_link": null,
+      "product_qty": 0
+    },
+    {
+      "section_guid": "ddad7ac9-4225-11ec-80ce-00155dfdd702",
+      "code": 15968753,
+      "title": "Товары для уборки",
+      "cover_image": "//cs.petrovich.ru/image/10652906/original.jpg",
+      "seo_link": null,
+      "product_qty": 0
+    },
+    {
+      "section_guid": "063d8140-3be9-11ec-80ce-00155dfdd702",
+      "code": 95479,
+      "title": "Чистящие и дезинфицирующие средства",
+      "cover_image": "//cs.petrovich.ru/image/10989044/original.jpg",
+      "seo_link": null,
+      "product_qty": 0
+    },
+    {
+      "section_guid": "e9e4a9a4-e397-11e6-95f7-00259036a192",
+      "code": 20793,
+      "title": "Защита лица, глаз, головы",
+      "cover_image": "//cs.petrovich.ru/images/1262368/original.jpg",
+      "seo_link": null,
+      "product_qty": 0
+    },
+    {
+      "section_guid": "e9e4a9a2-e397-11e6-95f7-00259036a192",
+      "code": 20771,
+      "title": "Защита органов слуха",
+      "cover_image": "//cs.petrovich.ru/images/1262362/original.jpg",
+      "seo_link": null,
+      "product_qty": 0
+    },
+    {
+      "section_guid": "e9e4a9b2-e397-11e6-95f7-00259036a192",
+      "code": 10469,
+      "title": "Рулетки",
+      "cover_image": "//cs.petrovich.ru/images/1261901/original.jpg",
+      "seo_link": null,
+      "product_qty": 0
+    },
+    {
+      "section_guid": "e9e4a9af-e397-11e6-95f7-00259036a192",
+      "code": 19216,
+      "title": "Маркеры, карандаши, мел",
+      "cover_image": "//cs.petrovich.ru/images/1263177/original.jpg",
+      "seo_link": null,
+      "product_qty": 0
+    },
+    {
+      "section_guid": "e9e4a9b0-e397-11e6-95f7-00259036a192",
+      "code": 19217,
+      "title": "Отвесы, шнуры",
+      "cover_image": "//cs.petrovich.ru/images/1263184/original.jpg",
+      "seo_link": null,
+      "product_qty": 0
+    },
+    {
+      "section_guid": "e9e4a9b4-e397-11e6-95f7-00259036a192",
+      "code": 10472,
+      "title": "Сопутствующий малярный инструмент",
+      "cover_image": "//cs.petrovich.ru/images/1261936/original.jpg",
+      "seo_link": null,
+      "product_qty": 0
+    },
+    {
+      "section_guid": "e9e4a98f-e397-11e6-95f7-00259036a192",
+      "code": 19231,
+      "title": "Ножи строительные, лезвия",
+      "cover_image": "//cs.petrovich.ru/images/1263283/original.jpg",
+      "seo_link": null,
+      "product_qty": 0
+    },
+    {
+      "section_guid": "e9e4a9b3-e397-11e6-95f7-00259036a192",
+      "code": 9834,
+      "title": "Уровни",
+      "cover_image": "//cs.petrovich.ru/images/1261898/original.jpg",
+      "seo_link": null,
+      "product_qty": 0
+    },
+    {
+      "section_guid": "e9e4a998-e397-11e6-95f7-00259036a192",
+      "code": 10454,
+      "title": "Ножницы",
+      "cover_image": "//cs.petrovich.ru/images/1261850/original.jpg",
+      "seo_link": null,
+      "product_qty": 0
+    },
+    {
+      "section_guid": "e9e4a9a6-e397-11e6-95f7-00259036a192",
+      "code": 4119,
+      "title": "Демисезонная спецодежда",
+      "cover_image": "//cs.petrovich.ru/images/1261880/original.jpg",
+      "seo_link": null,
+      "product_qty": 0
+    },
+    {
+      "section_guid": "e9e4a9a9-e397-11e6-95f7-00259036a192",
+      "code": 1408,
+      "title": "Рабочая обувь, наколенники",
+      "cover_image": "//cs.petrovich.ru/images/1261877/original.jpg",
+      "seo_link": null,
+      "product_qty": 0
+    }
+  ],
+  "attributes": null,
+  "barcode": "4680004093100",
+  "bonus": 0,
+  "breadcrumbs": [
+    {
+      "section_guid": "e9e4a802-e397-11e6-95f7-00259036a192",
+      "code": 1313,
+      "title": "Инструмент",
+      "cover_image": "//cs.petrovich.ru/images/1221806/original.jpg",
+      "seo_link": null,
+      "product_qty": 0
+    },
+    {
+      "section_guid": "e9e4a982-e397-11e6-95f7-00259036a192",
+      "code": 1407,
+      "title": "Спецодежда и средства защиты",
+      "cover_image": "//cs.petrovich.ru/images/1261874/original.jpg",
+      "seo_link": null,
+      "product_qty": 0
+    },
+    {
+      "section_guid": "e9e4a9a5-e397-11e6-95f7-00259036a192",
+      "code": 20794,
+      "title": "Защита рук",
+      "cover_image": "//cs.petrovich.ru/images/1262371/original.jpg",
+      "seo_link": null,
+      "product_qty": 0
+    }
+  ],
+  "calculator_components": null,
+  "certificates": null,
+  "checkout_type": "regular",
+  "code": 170127,
+  "compression_ratio": 1,
+  "cover_image": "//cs.petrovich.ru/image/20726476/original.jpg",
+  "description": "<p class=\"product-description-text\">Предназначены для защиты рук от механических воздействий и истирания при строительных, погрузочно-разгрузочных и сельскохозяйственных работах. Имеют двойное покрытие из натурального латекса.</p>",
+  "description_no_html": {
+    "description": "Предназначены для защиты рук от механических воздействий и истирания при строительных, погрузочно-разгрузочных и сельскохозяйственных работах. Имеют двойное покрытие из натурального латекса.",
+    "properties": []
+  },
+  "extended_description": "",
+  "extended_description_no_html": [],
+  "external_id": 284093,
+  "gift": null,
+  "has_alt_unit": false,
+  "has_analogues": false,
+  "height": 10,
+  "images": [
+    "//cs.petrovich.ru/image/20726476/original.jpg",
+    "//cs.petrovich.ru/image/20726503/original.jpg"
+  ],
+  "increment_step": 1,
+  "instructions": null,
+  "is_active": true,
+  "is_available_to_buy": true,
+  "is_city_defined": true,
+  "is_gift_certificate": false,
+  "is_in_showroom": false,
+  "is_in_wizart": false,
+  "is_infinite_shelf": false,
+  "is_marked": false,
+  "is_not_in_stock": true,
+  "is_service": false,
+  "is_solitary_shipping": false,
+  "is_unit_float": false,
+  "length": 190,
+  "lifting_tariff_guid": "7a64c7ef-9ea7-11e2-99f1-00259036a114",
+  "link": "https://rf.petrovich.ru/catalog/20794/170127/",
+  "loan_monthly_payment": null,
+  "price": {
+    "gold": 36,
+    "retail": 37,
+    "points": 8.75,
+    "individual": null
+  },
+  "price_alt": {
+    "gold": null,
+    "retail": null,
+    "individual": null
+  },
+  "product_guid": "6c3a1fad-899d-11e7-9b51-00259036a192",
+  "promos": null,
+  "properties": [
+    {
+      "slug": "artikul",
+      "title": "Артикул",
+      "value": [
+        {
+          "slug": "069088_6135_146853",
+          "title": "069088/6135/146853",
+          "link": null
+        }
+      ],
+      "unit": "",
+      "is_compare": false,
+      "is_description": true
+    },
+    {
+      "slug": "tip_tovara",
+      "title": "Тип товара",
+      "value": [
+        {
+          "slug": "perchatki",
+          "title": "Перчатки",
+          "link": "/catalog/20794/?tip_tovara=perchatki"
+        }
+      ],
+      "unit": "",
+      "is_compare": true,
+      "is_description": true
+    },
+    {
+      "slug": "brend",
+      "title": "Бренд",
+      "value": [
+        {
+          "slug": "no_name",
+          "title": "No name",
+          "link": null
+        }
+      ],
+      "unit": "",
+      "is_compare": true,
+      "is_description": true
+    },
+    {
+      "slug": "primenenie",
+      "title": "Применение",
+      "value": [
+        {
+          "slug": "universalnye",
+          "title": "Универсальное",
+          "link": "/catalog/20794/?primenenie=universalnye"
+        }
+      ],
+      "unit": "",
+      "is_compare": true,
+      "is_description": true
+    },
+    {
+      "slug": "rossiiskii_razmer",
+      "title": "Российский размер",
+      "value": [
+        {
+          "slug": "10",
+          "title": "10",
+          "link": null
+        }
+      ],
+      "unit": "",
+      "is_compare": true,
+      "is_description": true
+    },
+    {
+      "slug": "mejdunarodnyi_razmer",
+      "title": "Международный размер",
+      "value": [
+        {
+          "slug": "xl",
+          "title": "XL",
+          "link": null
+        }
+      ],
+      "unit": "",
+      "is_compare": true,
+      "is_description": true
+    },
+    {
+      "slug": "vid_pokrytiya",
+      "title": "Вид покрытия",
+      "value": [
+        {
+          "slug": "lateks",
+          "title": "Латекс",
+          "link": null
+        }
+      ],
+      "unit": "",
+      "is_compare": true,
+      "is_description": true
+    },
+    {
+      "slug": "cvet",
+      "title": "Цвет",
+      "value": [
+        {
+          "slug": "zelenyi",
+          "title": "Зеленый",
+          "link": null
+        }
+      ],
+      "unit": "",
+      "is_compare": true,
+      "is_description": true
+    },
+    {
+      "slug": "uteplennye",
+      "title": "Утепленные",
+      "value": [
+        {
+          "slug": "net",
+          "title": "Нет",
+          "link": null
+        }
+      ],
+      "unit": "",
+      "is_compare": true,
+      "is_description": true
+    },
+    {
+      "slug": "strana_proizvoditel",
+      "title": "Страна-производитель",
+      "value": [
+        {
+          "slug": "rossiya",
+          "title": "Россия",
+          "link": null
+        }
+      ],
+      "unit": "",
+      "is_compare": true,
+      "is_description": true
+    },
+    {
+      "slug": "ves",
+      "title": "Вес",
+      "value": [
+        {
+          "slug": "0_04_kg",
+          "title": "0,04",
+          "link": null
+        }
+      ],
+      "unit": "кг",
+      "is_compare": true,
+      "is_description": true
+    }
+  ],
+  "remains": {
+    "availability": "available",
+    "title": "Привезем 14/12",
+    "icon": "available",
+    "is_needed_choose_rf_city": true,
+    "supply_ways": [
+      {
+        "supply_way_type": "delivery",
+        "title": "Доставим",
+        "total": 15180,
+        "delivery_type": "regional",
+        "request_date": 1670144340,
+        "supply_date": 1670965200,
+        "is_show_remains_amount": true,
+        "subdivision_list": null
+      }
+    ],
+    "supply_to_stock": {
+      "title": "Привезем в строительные центры",
+      "list": null
+    },
+    "supply_to_pickup_point": null,
+    "is_have_one_subdivision": false
+  },
+  "section": {
+    "section_guid": "e9e4a9a5-e397-11e6-95f7-00259036a192",
+    "code": 20794,
+    "title": "Защита рук",
+    "cover_image": "//cs.petrovich.ru/images/1262371/original.jpg",
+    "seo_link": null,
+    "product_qty": 0
+  },
+  "services": null,
+  "special_terms": null,
+  "supplier": null,
+  "supply_days": 1,
+  "title": "Перчатки хлопчатобумажные Стандарт 5 нитей с двойным латексным обливом 10 (XL) зеленые",
+  "unit_ratio": 1,
+  "unit_ratio_alt": 1,
+  "unit_title": "пар",
+  "unit_title_alt": "пар",
+  "unit_title_full": {
+    "tvorit": "парами (2 шт.)",
+    "vinit": "пару (2 шт.)",
+    "imenit": "пара (2 шт.)"
+  },
+  "videos": null,
+  "volume_ratio": 1,
+  "weight": 0.04,
+  "width": 100
+}}}
