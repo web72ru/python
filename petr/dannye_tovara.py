@@ -3,7 +3,10 @@ import requests, lxml.html, json, csv, os
 session = requests.Session()
 
 ссылки_на_товары = ['https://api.petrovich.ru/catalog/v2.3/products/105679?city_code=rf&client_id=pet_site',
-                    'https://api.petrovich.ru/catalog/v2.3/products/170127?city_code=rf&client_id=pet_site']
+                    'https://api.petrovich.ru/catalog/v2.3/products/170127?city_code=rf&client_id=pet_site',
+                    'https://api.petrovich.ru/catalog/v2.3/products/940405?city_code=rf&client_id=pet_site',
+                    'https://api.petrovich.ru/catalog/v2.3/products/128020?city_code=rf&client_id=pet_site',
+                    'https://api.petrovich.ru/catalog/v2.3/products/672233?city_code=rf&client_id=pet_site']
 шапка = {
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 YaBrowser/22.11.0.2500 Yowser/2.5 Safari/537.36',
@@ -57,17 +60,27 @@ def получаем_данные_товара(список_ссылок):
             значения.append(ключи_словарь['description'])  # описание
             значения.append(ключи_словарь['link'])  # ссылка
 
-            for характеристика in ключи_словарь['properties']: # характеристики
-                if  характеристика['title'] not in ключи:
-                    ключи.append(характеристика['title'])
-                if характеристика['title'] in ключи:
-                    значения.append(характеристика['value'][0]['title'])
-                else:
+            характеристики = {}
+            for характеристика in ключи_словарь['properties']:  # характеристики
+                характеристики.update({характеристика['title']: характеристика['value'][0]['title']})
+
+            for ключ_характеристики in характеристики:
+                if ключ_характеристики not in ключи:
+                    ключи.append(ключ_характеристики)
+
+            for общий_ключ in ключи:
+                if общий_ключ not in характеристики.keys():
                     значения.append('')
+                else:
+                    значения.append(характеристики[общий_ключ])
 
             записчик = csv.writer(файл, delimiter=';')
             записчик.writerow(значения)
 
+        # файл.seek(0)
+        # записчик = csv.writer(файл, delimiter=';')
+        # записчик.writerow(ключи)
+        # записчик.writerow('\n')
 
 
 получаем_данные_товара(ссылки_на_товары)
